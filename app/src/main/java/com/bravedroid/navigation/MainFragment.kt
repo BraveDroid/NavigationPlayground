@@ -35,7 +35,7 @@ class MainFragment : Fragment() {
                 R.id.about_us_btn -> requireActivity().findNavController(view.id).navigate(R.id.aboutActivity)
                 //navigate using navDirections from safe args
                 R.id.settings_btn -> {
-                    val action = MainFragmentDirections.actionMainFragmentToChooseRecipientFragment()
+                    val action = MainFragmentDirections.actionMainFragmentToSettingsFragment()
                    findNavController().navigate(action)
                 }
             }
