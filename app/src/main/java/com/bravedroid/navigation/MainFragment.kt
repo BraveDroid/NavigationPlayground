@@ -13,9 +13,9 @@ import kotlinx.android.synthetic.main.fragment_main.*
 class MainFragment : Fragment() {
 
     override fun onCreateView(
-            inflater: LayoutInflater,
-            container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
         return inflater.inflate(R.layout.fragment_main, container, false)
     }
@@ -25,18 +25,22 @@ class MainFragment : Fragment() {
         val callback: (View) -> Unit = { view ->
             when (view.id) {
                 //navigate using action Id (findNavController is the extension of the activity )
-                R.id.view_transactions_btn -> requireActivity().findNavController(view.id).navigate(R.id.action_mainFragment_to_viewTransactionFragment)
+                R.id.view_transactions_btn -> requireActivity().findNavController(view.id).navigate(
+                    R.id.action_mainFragment_to_viewTransactionFragment
+                )
                 //navigate using action Id (findNavController is the extension of the view)
                 R.id.send_money_btn -> view.findNavController().navigate(R.id.action_mainFragment_to_chooseRecipientFragment)
                 //navigate using action Id (findNavController is the extension of the fragment)
                 R.id.view_balance_btn -> findNavController().navigate(R.id.action_mainFragment_to_viewBalanceFragment)
-                //navigate using destination Id
-                R.id.profile_btn -> requireActivity().findNavController(view.id).navigate(R.id.profileFragment)
+                //navigate using action Id
+                R.id.profile_btn ->
+                    requireActivity().findNavController(view.id).navigate(R.id.action_mainFragment_to_profile_navigation)
+                //navigate using Destination Id, it is ok even no action is defined , because same nav graph
                 R.id.about_us_btn -> requireActivity().findNavController(view.id).navigate(R.id.aboutActivity)
                 //navigate using navDirections from safe args
                 R.id.settings_btn -> {
                     val action = MainFragmentDirections.actionMainFragmentToSettingsFragment()
-                   findNavController().navigate(action)
+                    findNavController().navigate(action)
                 }
             }
         }
