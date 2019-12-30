@@ -21,7 +21,7 @@
             app:destination="@id/viewBalanceFragment" />
         <action
             android:id="@+id/action_mainFragment_to_settingsFragment"
-            app:destination="@id/settingsFragment" />
+            app:destination="@id/settings_navigation" />
     </fragment>
     <fragment
         android:id="@+id/chooseRecipientFragment"
@@ -56,28 +56,36 @@
         android:name="com.bravedroid.navigation.ViewTransactionFragment"
         android:label="fragment_view_transaction"
         tools:layout="@layout/fragment_view_transaction" />
-    <fragment
-        android:id="@+id/profileFragment"
-        android:name="com.bravedroid.navigation.ProfileFragment"
-        android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile">
-        <action
-            android:id="@+id/action_profileFragment_to_confirmationProfileDialogFragment"
-            app:destination="@id/confirmationProfileDialogFragment" />
-    </fragment>
     <activity
         android:id="@+id/aboutActivity"
         android:name="com.bravedroid.navigation.AboutActivity"
         android:label="activity_about"
         tools:layout="@layout/activity_about" />
-    <fragment
-        android:id="@+id/settingsFragment"
-        android:name="com.bravedroid.navigation.SettingsFragment"
-        android:label="fragment_settings"
-        tools:layout="@layout/fragment_settings" />
-    <dialog
-        android:id="@+id/confirmationProfileDialogFragment"
-        android:name="com.bravedroid.navigation.ConfirmationProfileDialogFragment"
-        android:label="fragment_dialog_confirmation_profile"
-        tools:layout="@layout/fragment_confirmation_profile_dialog" />
+    <navigation
+        android:id="@+id/profile_navigation"
+        app:startDestination="@id/confirmationProfileDialogFragment" >
+        <dialog
+            android:id="@+id/confirmationProfileDialogFragment"
+            android:name="com.bravedroid.navigation.ConfirmationProfileDialogFragment"
+            android:label="fragment_dialog_confirmation_profile"
+            tools:layout="@layout/fragment_confirmation_profile_dialog" />
+        <fragment
+            android:id="@+id/profileFragment"
+            android:name="com.bravedroid.navigation.ProfileFragment"
+            android:label="fragment_profile"
+            tools:layout="@layout/fragment_profile">
+            <action
+                android:id="@+id/action_profileFragment_to_confirmationProfileDialogFragment"
+                app:destination="@id/confirmationProfileDialogFragment" />
+        </fragment>
+    </navigation>
+    <navigation
+        android:id="@+id/settings_navigation"
+        app:startDestination="@id/settingsFragment" >
+        <fragment
+            android:id="@+id/settingsFragment"
+            android:name="com.bravedroid.navigation.SettingsFragment"
+            android:label="fragment_settings"
+            tools:layout="@layout/fragment_settings" />
+    </navigation>
 </navigation>
