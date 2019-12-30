@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fe8"
+    tools:context=".ProfileFragment">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="This is your profile"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline1"
+        android:textColor="#252002" />
+
+    <Button
+        android:id="@+id/confirmation_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|end"
+        android:text="confirmation dialog ?" />
+
+    <Button
+        android:id="@+id/confirmation_fullscreen_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:text="confirmation fs dialog?" />
+
+</FrameLayout>
