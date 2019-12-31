@@ -39,8 +39,19 @@ class MainFragment : Fragment() {
                 R.id.about_us_btn -> requireActivity().findNavController(view.id).navigate(R.id.aboutActivity)
                 //navigate using navDirections from safe args
                 R.id.settings_btn -> {
-                    val action = MainFragmentDirections.actionMainFragmentToSettingsFragment()
-                    findNavController().navigate(action)
+                    val navDirections =
+                        MainFragmentDirections.actionMainFragmentToSettingsFragment()
+                    findNavController().navigate(navDirections)
+                }
+                R.id.history_btn -> {
+                    //navigate by destination using the id of the include navigation
+                    //requireActivity().findNavController(view.id).navigate(R.id.history_nav_graph)
+                    val navDirections = MainFragmentDirections.actionMainFragmentToHistoryNavGraph()
+                    findNavController().navigate(navDirections)
+                }
+
+                R.id.messages_btn -> {
+                    findNavController().navigate(R.id.action_mainFragment_to_message_nav_graph)
                 }
             }
         }
@@ -51,5 +62,7 @@ class MainFragment : Fragment() {
         profile_btn.setOnClickListener(callback)
         about_us_btn.setOnClickListener(callback)
         settings_btn.setOnClickListener(callback)
+        history_btn.setOnClickListener(callback)
+        messages_btn.setOnClickListener(callback)
     }
 }
