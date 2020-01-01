@@ -11,7 +11,6 @@
         android:layout_height="match_parent"
         android:text="This is settings !! attention !!!!"
         android:textAppearance="@style/TextAppearance.MaterialComponents.Headline1"
-        android:textColor="#161B14"
-        />
+        android:textColor="#161B14" />
 
 </FrameLayout>
