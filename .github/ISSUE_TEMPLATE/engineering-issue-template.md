@@ -3,7 +3,7 @@ name: Engineering issue template
 about: Engineering task that improve productivity
 title: "[ENG]"
 labels: documentation
-assignees: houssemzaier
+assignees: houssemzaier, refka-farid
 
 ---
 

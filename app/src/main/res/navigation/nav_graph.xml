@@ -25,6 +25,12 @@
         <action
             android:id="@+id/action_mainFragment_to_profile_navigation"
             app:destination="@id/profile_navigation" />
+        <action
+            android:id="@+id/action_mainFragment_to_message_nav_graph"
+            app:destination="@id/message_nav_graph" />
+        <action
+            android:id="@+id/action_mainFragment_to_history_nav_graph"
+            app:destination="@id/history_nav_graph" />
     </fragment>
     <fragment
         android:id="@+id/chooseRecipientFragment"
@@ -92,4 +98,15 @@
             android:label="fragment_settings"
             tools:layout="@layout/fragment_settings" />
     </navigation>
+
+    <include app:graph="@navigation/message_nav_graph" />
+    <include app:graph="@navigation/history_nav_graph" />
+    <fragment
+        android:id="@+id/infoFragment"
+        android:name="com.bravedroid.navigation.InfoFragment"
+        android:label="fragment_info"
+        tools:layout="@layout/fragment_info" />
+    <action
+        android:id="@+id/action_global_infoFragment"
+        app:destination="@id/infoFragment" />
 </navigation>
