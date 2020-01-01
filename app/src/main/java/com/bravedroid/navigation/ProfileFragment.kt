@@ -35,7 +35,9 @@ class ProfileFragment : Fragment() {
                     ConfirmationProfileDialogFragment.TAG
                 ).commit()
         }
+
+        info_btn.setOnClickListener {
+            findNavController().navigate(ProfileFragmentDirections.actionGlobalInfoFragment())
+        }
     }
-
-
 }
