@@ -13,7 +13,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onBackPressed() {
         val dialogFragment =
-            supportFragmentManager.findFragmentByTag("confirmationProfileDialogFragment") as? DialogFragment
+            supportFragmentManager.findFragmentByTag(ConfirmationProfileDialogFragment.TAG) as? DialogFragment
 
 //        if (hasFullScreenDialog(dialogFragment))
         if (dialogFragment.isStillVisible())
