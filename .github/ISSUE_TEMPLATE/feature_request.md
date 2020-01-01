@@ -3,7 +3,7 @@ name: Feature request
 about: Suggest an idea for this project
 title: "[NAV]"
 labels: enhancement
-assignees: houssemzaier
+assignees: houssemzaier, refka-farid
 
 ---
 
