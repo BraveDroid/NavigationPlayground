@@ -6,6 +6,8 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.addCallback
+import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import androidx.fragment.app.activityViewModels
@@ -27,18 +29,26 @@ class ProfileFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        viewModel.authenticationState.observe(viewLifecycleOwner, Observer { authenticationState ->
-            when (authenticationState) {
-                LoginViewModel.AuthenticationState.AUTHENTICATED -> {
-                    Log.d(TAG, "AUTHENTICATED")
-                }
-                LoginViewModel.AuthenticationState.UNAUTHENTICATED,
-                LoginViewModel.AuthenticationState.INVALID_AUTHENTICATION -> {
-                    findNavController().navigate(ProfileFragmentDirections.actionGlobalLoginFragment())
-                    Log.d(TAG, "UNAUTHENTICATED or INVALID_AUTHENTICATION ")
-                }
+        requireActivity().onBackPressedDispatcher.addCallback(this) {
+            if (!hasFoundAndDismissedDialogByTag(ConfirmationProfileDialogFragment.TAG)) {
+                findNavController().popBackStack()
             }
-        })
+        }
+
+        viewModel.authenticationState.observe(
+            viewLifecycleOwner,
+            Observer { authenticationState: LoginViewModel.AuthenticationState ->
+                when (authenticationState) {
+                    LoginViewModel.AuthenticationState.AUTHENTICATED -> {
+                        Log.d(TAG, "AUTHENTICATED")
+                    }
+                    LoginViewModel.AuthenticationState.UNAUTHENTICATED, LoginViewModel.AuthenticationState.INVALID_AUTHENTICATION -> {
+                        findNavController().navigate(ProfileFragmentDirections.actionGlobalLoginFragment())
+                        Log.d(TAG, "UNAUTHENTICATED or INVALID_AUTHENTICATION ")
+                    }
+                }
+            })
+
         confirmation_btn.setOnClickListener {
             findNavController().navigate(ProfileFragmentDirections.actionProfileFragmentToConfirmationProfileDialogFragment())
         }
@@ -58,7 +68,18 @@ class ProfileFragment : Fragment() {
             findNavController().navigate(ProfileFragmentDirections.actionGlobalInfoFragment())
         }
     }
+}
 
-    private fun showWelcomeMessage() {
+private fun Fragment.hasFoundAndDismissedDialogByTag(tag: String): Boolean {
+    val dialogFragment =
+        requireActivity().supportFragmentManager.findFragmentByTag(tag) as? DialogFragment
+
+    return if (dialogFragment != null && dialogFragment.isVisible) {
+        dialogFragment.dismiss()
+        true
+    } else {
+        false
     }
 }
+
+
