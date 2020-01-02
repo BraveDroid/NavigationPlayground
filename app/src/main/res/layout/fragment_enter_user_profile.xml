@@ -4,8 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ed3"
+    android:background="#33EEA3"
     tools:context=".LoginFragment">
+
+    <TextView
+        android:id="@+id/enter_profile_data_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:text="Enter Profile Data"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        app:layout_constraintBottom_toTopOf="@+id/fullName_editText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed" />
 
     <EditText
         android:id="@+id/fullName_editText"
@@ -13,52 +26,39 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
         android:ems="10"
-        android:hint="User Name"
+        android:hint="Full Name"
         android:inputType="textPersonName"
         android:textColor="#1D1B06"
-        app:layout_constraintBottom_toTopOf="@+id/password_editText"
+        app:layout_constraintBottom_toTopOf="@+id/bio_editText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/enter_profile_data_tv"
         app:layout_constraintVertical_chainStyle="packed" />
 
     <EditText
-        android:id="@+id/password_editText"
+        android:id="@+id/bio_editText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="Password"
-        android:inputType="textPassword"
+        android:hint="BIO"
+        android:inputType="textPersonName"
         android:textColor="#1D1B06"
-        app:layout_constraintBottom_toTopOf="@+id/login_btn"
+        app:layout_constraintBottom_toTopOf="@+id/next_btn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/fullName_editText" />
 
     <Button
-        android:id="@+id/login_btn"
+        android:id="@+id/next_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:background="#1D1B06"
-        android:text="LOGIN"
+        android:text="next"
         android:textColor="#F5E323"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/password_editText" />
-
-    <Button
-        android:id="@+id/registration_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:background="#1D1B06"
-        android:text="register"
-        android:textColor="#F5E323"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/login_btn" />
+        app:layout_constraintTop_toBottomOf="@+id/bio_editText" />
 </androidx.constraintlayout.widget.ConstraintLayout>
