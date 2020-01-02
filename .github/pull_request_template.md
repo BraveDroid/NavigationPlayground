@@ -1,5 +1,5 @@
 # Related Issue
-- the title issue goes here, <ins>example</ins>: [nav-2].
+- [BUG/NAV/ENG] 'title issue here' that closes '#4'
 
 # Proposed Changes
 - change 1 <ins>example</ins>:(refactor the view)
