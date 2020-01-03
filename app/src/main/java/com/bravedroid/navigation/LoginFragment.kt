@@ -43,9 +43,12 @@ class LoginFragment : Fragment() {
         })
         login_btn.setOnClickListener {
             viewModel.authenticate(
-                userName_editText.text.toString(),
+                fullName_editText.text.toString(),
                 password_editText.text.toString()
             )
+        }
+        registration_btn.setOnClickListener {
+            findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToRegisterNavGraph())
         }
     }
 

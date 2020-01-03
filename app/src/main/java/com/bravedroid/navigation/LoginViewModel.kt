@@ -11,7 +11,7 @@ class LoginViewModel : ViewModel() {
     }
 
     val authenticationState = MutableLiveData<AuthenticationState>()
-    var username: String
+    private var username: String
 
     init {
 //         In this example, the user is always unauthenticated when MainActivity is launched
@@ -26,6 +26,14 @@ class LoginViewModel : ViewModel() {
     fun authenticate(username: String, password: String) {
         if (passwordIsValidForUsername(username, password)) {
             this.username = username
+            authenticationState.value = AuthenticationState.AUTHENTICATED
+        } else {
+            authenticationState.value = AuthenticationState.INVALID_AUTHENTICATION
+        }
+    }
+
+    fun authenticate(token: String) {
+        if (token.isNotEmpty()) {
             authenticationState.value = AuthenticationState.AUTHENTICATED
         } else {
             authenticationState.value = AuthenticationState.INVALID_AUTHENTICATION

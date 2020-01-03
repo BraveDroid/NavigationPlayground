@@ -8,7 +8,11 @@
         android:id="@+id/loginFragment"
         android:name="com.bravedroid.navigation.LoginFragment"
         android:label="fragment_login"
-        tools:layout="@layout/fragment_login" />
+        tools:layout="@layout/fragment_login">
+        <action
+            android:id="@+id/action_loginFragment_to_register_nav_graph"
+            app:destination="@id/register_nav_graph" />
+    </fragment>
     <action
         android:id="@+id/action_global_loginFragment"
         app:destination="@id/loginFragment" />
@@ -116,4 +120,5 @@
     <action
         android:id="@+id/action_global_infoFragment"
         app:destination="@id/infoFragment" />
+    <include app:graph="@navigation/registration_nav_graph" />
 </navigation>
