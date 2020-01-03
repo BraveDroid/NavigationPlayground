@@ -6,6 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
+import kotlinx.android.synthetic.main.fragment_specify_amount.*
 
 class SpecifyAmountFragment : Fragment() {
 
@@ -14,9 +17,26 @@ class SpecifyAmountFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_specify_amount, container, false)
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        val specifyAmountFragmentArgs by navArgs<SpecifyAmountFragmentArgs>()
+        val name = specifyAmountFragmentArgs.name
+        send_btn.setOnClickListener {
+            val amount = input_amount.text.toString()
+            findNavController().navigate(
+                SpecifyAmountFragmentDirections.actionSpecifyAmountFragmentToConfirmationFragment(
+                    amount,
+                    name
+                )
+            )
+        }
 
+        cancel_btn.setOnClickListener {
+            findNavController().popBackStack(R.id.chooseRecipientFragment, false)
+//            same as
+//            findNavController().popBackStack()
+        }
+    }
 }

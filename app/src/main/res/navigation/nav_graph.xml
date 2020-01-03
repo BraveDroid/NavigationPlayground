@@ -27,7 +27,18 @@
             app:destination="@id/profile_navigation" />
         <action
             android:id="@+id/action_mainFragment_to_message_nav_graph"
-            app:destination="@id/message_nav_graph" />
+            app:destination="@id/message_nav_graph">
+            <argument
+                android:name="messageText"
+                app:argType="string" />
+        </action>
+        <action
+            android:id="@+id/action_mainFragment_to_aboutActivity"
+            app:destination="@id/aboutActivity">
+            <argument
+                android:name="messageText"
+                app:argType="string" />
+        </action>
         <action
             android:id="@+id/action_mainFragment_to_history_nav_graph"
             app:destination="@id/history_nav_graph" />
@@ -39,13 +50,25 @@
         tools:layout="@layout/fragment_choose_recipient">
         <action
             android:id="@+id/action_chooseRecipientFragment_to_specifyAmountFragment"
-            app:destination="@id/specifyAmountFragment" />
+            app:destination="@id/specifyAmountFragment">
+            <argument
+                android:name="name"
+                app:argType="string" />
+        </action>
     </fragment>
     <fragment
         android:id="@+id/confirmationFragment"
         android:name="com.bravedroid.navigation.ConfirmationFragment"
         android:label="fragment_confirmation"
-        tools:layout="@layout/fragment_confirmation" />
+        tools:layout="@layout/fragment_confirmation">
+        <argument
+            android:name="amount"
+            app:argType="string" />
+
+        <argument
+            android:name="name"
+            app:argType="string" />
+    </fragment>
     <fragment
         android:id="@+id/specifyAmountFragment"
         android:name="com.bravedroid.navigation.SpecifyAmountFragment"
@@ -53,7 +76,17 @@
         tools:layout="@layout/fragment_specify_amount">
         <action
             android:id="@+id/action_specifyAmountFragment_to_confirmationFragment"
-            app:destination="@id/confirmationFragment" />
+            app:destination="@id/confirmationFragment">
+            <argument
+                android:name="amount"
+                app:argType="string" />
+            <argument
+                android:name="name"
+                app:argType="string" />
+        </action>
+        <argument
+            android:name="name"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/viewBalanceFragment"
@@ -69,7 +102,11 @@
         android:id="@+id/aboutActivity"
         android:name="com.bravedroid.navigation.AboutActivity"
         android:label="activity_about"
-        tools:layout="@layout/activity_about" />
+        tools:layout="@layout/activity_about">
+        <argument
+            android:name="messageText"
+            app:argType="string" />
+    </activity>
     <navigation
         android:id="@+id/profile_navigation"
         app:startDestination="@id/profileFragment">
