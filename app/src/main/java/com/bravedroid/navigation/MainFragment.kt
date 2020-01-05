@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
@@ -36,7 +37,11 @@ class MainFragment : Fragment() {
                 R.id.profile_btn ->
                     requireActivity().findNavController(view.id).navigate(R.id.action_mainFragment_to_profile_navigation)
                 //navigate using Destination Id, it is ok even no action is defined , because same nav graph
-                R.id.about_us_btn -> requireActivity().findNavController(view.id).navigate(R.id.aboutActivity)
+                R.id.about_us_btn -> {
+                    // requireActivity().findNavController(view.id).navigate(R.id.aboutActivity)
+                    requireActivity().findNavController(view.id)
+                        .navigate(MainFragmentDirections.actionMainFragmentToAboutActivity("about message"))
+                }
                 //navigate using navDirections from safe args
                 R.id.settings_btn -> {
                     val navDirections =
@@ -46,12 +51,19 @@ class MainFragment : Fragment() {
                 R.id.history_btn -> {
                     //navigate by destination using the id of the include navigation
                     //requireActivity().findNavController(view.id).navigate(R.id.history_nav_graph)
-                    val navDirections = MainFragmentDirections.actionMainFragmentToHistoryNavGraph()
-                    findNavController().navigate(navDirections)
+//                    val navDirections = MainFragmentDirections.actionMainFragmentToHistoryNavGraph()
+//                    findNavController().navigate(navDirections)
+                    val bundle = bundleOf("MESSAGE_KEY" to "message history")
+                    view.findNavController().navigate(R.id.history_nav_graph, bundle)
                 }
 
                 R.id.messages_btn -> {
-                    findNavController().navigate(R.id.action_mainFragment_to_message_nav_graph)
+                    //  findNavController().navigate(R.id.action_mainFragment_to_message_nav_graph)
+                    findNavController().navigate(
+                        MainFragmentDirections.actionMainFragmentToMessageNavGraph(
+                            "message1"
+                        )
+                    )
                 }
             }
         }

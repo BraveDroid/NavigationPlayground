@@ -19,6 +19,14 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
 }
 
 dependencies {
@@ -27,6 +35,7 @@ dependencies {
     implementation 'androidx.core:core-ktx:1.1.0'
 
     implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.fragment:fragment-ktx:1.2.0-rc04'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
