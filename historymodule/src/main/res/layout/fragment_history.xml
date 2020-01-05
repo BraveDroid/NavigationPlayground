@@ -11,5 +11,15 @@
         android:layout_height="match_parent"
         android:text="Here you find your History !! attention !!!!"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-        android:textColor="#DFE3E7"/>
+        android:textColor="#DFE3E7" />
+
+    <TextView
+        android:id="@+id/message_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline3"
+        android:textColor="#46124E"
+        tools:text="lolo" />
 </FrameLayout>
