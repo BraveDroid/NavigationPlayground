@@ -5,11 +5,17 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.app.ActivityOptionsCompat
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
+import androidx.navigation.ActivityNavigator
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
+import com.bravedroid.navigation.util.NavControllerDecorator
+import com.bravedroid.navigation.util.navigateWithAnimation
 import kotlinx.android.synthetic.main.fragment_main.*
+import androidx.core.util.Pair as UtilPair
 
 class MainFragment : Fragment() {
 
@@ -30,23 +36,40 @@ class MainFragment : Fragment() {
                     R.id.action_mainFragment_to_viewTransactionFragment
                 )
                 //navigate using action Id (findNavController is the extension of the view)
-                R.id.send_money_btn -> view.findNavController().navigate(R.id.action_mainFragment_to_chooseRecipientFragment)
+                R.id.send_money_btn -> view.findNavController().navigateWithAnimation(R.id.action_mainFragment_to_chooseRecipientFragment)
                 //navigate using action Id (findNavController is the extension of the fragment)
-                R.id.view_balance_btn -> findNavController().navigate(R.id.action_mainFragment_to_viewBalanceFragment)
+                R.id.view_balance_btn -> {
+                    NavControllerDecorator(findNavController()).navigate(
+                        R.id.action_mainFragment_to_viewBalanceFragment
+                    )
+                }
                 //navigate using action Id
                 R.id.profile_btn ->
                     requireActivity().findNavController(view.id).navigate(R.id.action_mainFragment_to_profile_navigation)
                 //navigate using Destination Id, it is ok even no action is defined , because same nav graph
                 R.id.about_us_btn -> {
-                    // requireActivity().findNavController(view.id).navigate(R.id.aboutActivity)
-                    requireActivity().findNavController(view.id)
-                        .navigate(MainFragmentDirections.actionMainFragmentToAboutActivity("about message"))
+                    val options = ActivityOptionsCompat.makeSceneTransitionAnimation(
+                        requireActivity(),
+                        UtilPair.create(settings_imageView, "settings_imageView_transition")
+                    )
+                    val extras: ActivityNavigator.Extras =
+                        ActivityNavigator.Extras.Builder().setActivityOptions(options).build()
+
+                    view.findNavController().navigate(
+                        MainFragmentDirections.actionMainFragmentToAboutActivity("about message"),
+                        extras
+                    )
                 }
                 //navigate using navDirections from safe args
-                R.id.settings_btn -> {
-                    val navDirections =
-                        MainFragmentDirections.actionMainFragmentToSettingsFragment()
-                    findNavController().navigate(navDirections)
+                R.id.settings_btn,
+                R.id.settings_imageView -> {
+                    val extras = FragmentNavigatorExtras(
+                        settings_imageView to "settings_imageView_transition"
+                    )
+                    view.findNavController().navigate(
+                        MainFragmentDirections.actionMainFragmentToSettingsFragment(),
+                        extras
+                    )
                 }
                 R.id.history_btn -> {
                     //navigate by destination using the id of the include navigation
@@ -74,6 +97,7 @@ class MainFragment : Fragment() {
         profile_btn.setOnClickListener(callback)
         about_us_btn.setOnClickListener(callback)
         settings_btn.setOnClickListener(callback)
+        settings_imageView.setOnClickListener(callback)
         history_btn.setOnClickListener(callback)
         messages_btn.setOnClickListener(callback)
     }
