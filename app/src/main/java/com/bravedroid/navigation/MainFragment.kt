@@ -14,6 +14,7 @@ import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
 import com.bravedroid.navigation.util.NavControllerDecorator
 import com.bravedroid.navigation.util.navigateWithAnimation
+import com.bravedroid.historymodule.HistoryFragment
 import kotlinx.android.synthetic.main.fragment_main.*
 import androidx.core.util.Pair as UtilPair
 
@@ -76,7 +77,7 @@ class MainFragment : Fragment() {
                     //requireActivity().findNavController(view.id).navigate(R.id.history_nav_graph)
 //                    val navDirections = MainFragmentDirections.actionMainFragmentToHistoryNavGraph()
 //                    findNavController().navigate(navDirections)
-                    val bundle = bundleOf("MESSAGE_KEY" to "message history")
+                    val bundle = bundleOf(HistoryFragment.MESSAGE_KEY to "message history")
                     view.findNavController().navigate(R.id.history_nav_graph, bundle)
                 }
 

@@ -1,24 +1,89 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#e77"
-    tools:context=".InfoFragment">
+    android:layout_height="match_parent">
 
-    <TextView
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Info Fragment"
-        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline1"
-        android:textColor="#3F1F1F" />
-
-    <Button
-        android:id="@+id/exit_btn"
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|center_horizontal"
-        android:textStyle="bold"
-        android:text="Exit" />
+        android:background="#e77"
+        tools:context=".InfoFragment">
 
-</FrameLayout>
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:background="#F7BFBF"
+            android:fontFamily="serif"
+            android:text="Info Fragment"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline2"
+            android:textColor="#7C5D5D"
+            app:layout_constraintBottom_toTopOf="@+id/deepLinkImplicit_amazon"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="spread" />
+
+        <TextView
+            android:id="@+id/deepLinkImplicit_amazon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:fontFamily="monospace"
+            android:text="amazon"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline3"
+            android:textColor="#F0DEDE"
+            app:layout_constraintBottom_toTopOf="@+id/deepLinkImplicit_specifyAmountFragment"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+        <TextView
+            android:id="@+id/deepLinkImplicit_specifyAmountFragment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:fontFamily="monospace"
+            android:text="specify Amount Mr Binder"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline3"
+            android:textColor="#F0DEDE"
+            app:layout_constraintBottom_toTopOf="@+id/notification_btn"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/deepLinkImplicit_amazon" />
+
+        <Button
+            android:id="@+id/notification_btn"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_margin="24dp"
+            android:background="#F4FA95"
+            android:fontFamily="monospace"
+            android:text="NOTIFY ME"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/exit_btn"
+            app:layout_constraintTop_toBottomOf="@+id/deepLinkImplicit_specifyAmountFragment" />
+
+        <Button
+            android:id="@+id/exit_btn"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_margin="24dp"
+            android:background="#ABEDF7"
+            android:fontFamily="monospace"
+            android:text="Exit"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/textView3"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/notification_btn" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.core.widget.NestedScrollView>

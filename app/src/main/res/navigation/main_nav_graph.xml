@@ -57,6 +57,9 @@
         <action
             android:id="@+id/action_mainFragment_to_history_nav_graph"
             app:destination="@id/history_nav_graph" />
+        <deepLink
+            android:id="@+id/deepLinkMainFragment"
+            app:uri="appAndroid://mainScreen" />
     </fragment>
     <fragment
         android:id="@+id/chooseRecipientFragment"
@@ -70,19 +73,6 @@
                 android:name="name"
                 app:argType="string" />
         </action>
-    </fragment>
-    <fragment
-        android:id="@+id/confirmationFragment"
-        android:name="com.bravedroid.navigation.ConfirmationFragment"
-        android:label="fragment_confirmation"
-        tools:layout="@layout/fragment_confirmation">
-        <argument
-            android:name="amount"
-            app:argType="string" />
-
-        <argument
-            android:name="name"
-            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/specifyAmountFragment"
@@ -99,6 +89,22 @@
                 android:name="name"
                 app:argType="string" />
         </action>
+        <argument
+            android:name="name"
+            app:argType="string" />
+        <deepLink
+            android:id="@+id/deepLink"
+            app:uri="https://www.bravedroid.com/name/{name_dl}" />
+    </fragment>
+    <fragment
+        android:id="@+id/confirmationFragment"
+        android:name="com.bravedroid.navigation.ConfirmationFragment"
+        android:label="fragment_confirmation"
+        tools:layout="@layout/fragment_confirmation">
+        <argument
+            android:name="amount"
+            app:argType="string" />
+
         <argument
             android:name="name"
             app:argType="string" />

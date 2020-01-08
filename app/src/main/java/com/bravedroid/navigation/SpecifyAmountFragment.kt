@@ -23,7 +23,8 @@ class SpecifyAmountFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val specifyAmountFragmentArgs by navArgs<SpecifyAmountFragmentArgs>()
-        val name = specifyAmountFragmentArgs.name
+        val name = arguments?.getString("name_dl") ?:specifyAmountFragmentArgs.name
+
         send_btn.setOnClickListener {
             val amount = input_amount.text.toString()
             findNavController().navigateWithAnimation(
