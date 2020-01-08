@@ -26,7 +26,11 @@
             app:destination="@id/chooseRecipientFragment" />
         <action
             android:id="@+id/action_mainFragment_to_viewTransactionFragment"
-            app:destination="@id/viewTransactionFragment" />
+            app:destination="@id/viewTransactionFragment"
+            app:enterAnim="@anim/slide_in_from_right_to_left"
+            app:exitAnim="@anim/slide_out_from_right_to_left"
+            app:popEnterAnim="@anim/slide_in_from_left_to_right"
+            app:popExitAnim="@anim/slide_out_from_left_to_right" />
         <action
             android:id="@+id/action_mainFragment_to_viewBalanceFragment"
             app:destination="@id/viewBalanceFragment" />
