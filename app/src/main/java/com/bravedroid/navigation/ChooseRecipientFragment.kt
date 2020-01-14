@@ -23,7 +23,7 @@ class ChooseRecipientFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        next_btn.setOnClickListener {
+        next_btn_choose_recipient.setOnClickListener {
             val name = input_recipient.text.toString()
             findNavController().navigateWithAnimation(
                 ChooseRecipientFragmentDirections.actionChooseRecipientFragmentToSpecifyAmountFragment(
