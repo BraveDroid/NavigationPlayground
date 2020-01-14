@@ -5,18 +5,16 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.app.ActivityOptionsCompat
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
-import androidx.navigation.ActivityNavigator
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
+import com.bravedroid.historymodule.HistoryFragment
+import com.bravedroid.navigation.util.ActivityTransitionUtil
+import com.bravedroid.navigation.util.FragmentTransitionUtil
 import com.bravedroid.navigation.util.NavControllerDecorator
 import com.bravedroid.navigation.util.navigateWithAnimation
-import com.bravedroid.historymodule.HistoryFragment
 import kotlinx.android.synthetic.main.fragment_main.*
-import androidx.core.util.Pair as UtilPair
 
 class MainFragment : Fragment() {
 
@@ -49,27 +47,17 @@ class MainFragment : Fragment() {
                     requireActivity().findNavController(view.id).navigate(R.id.action_mainFragment_to_profile_navigation)
                 //navigate using Destination Id, it is ok even no action is defined , because same nav graph
                 R.id.about_us_btn -> {
-                    val options = ActivityOptionsCompat.makeSceneTransitionAnimation(
-                        requireActivity(),
-                        UtilPair.create(settings_imageView, "settings_imageView_transition")
-                    )
-                    val extras: ActivityNavigator.Extras =
-                        ActivityNavigator.Extras.Builder().setActivityOptions(options).build()
-
                     view.findNavController().navigate(
                         MainFragmentDirections.actionMainFragmentToAboutActivity("about message"),
-                        extras
+                        ActivityTransitionUtil(requireActivity(), settings_imageView).extras
                     )
                 }
                 //navigate using navDirections from safe args
                 R.id.settings_btn,
                 R.id.settings_imageView -> {
-                    val extras = FragmentNavigatorExtras(
-                        settings_imageView to "settings_imageView_transition"
-                    )
                     view.findNavController().navigate(
                         MainFragmentDirections.actionMainFragmentToSettingsFragment(),
-                        extras
+                        FragmentTransitionUtil(settings_imageView).extras
                     )
                 }
                 R.id.history_btn -> {
