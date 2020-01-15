@@ -12,6 +12,7 @@ import androidx.navigation.fragment.findNavController
 import com.bravedroid.navigation.LoginViewModel.AuthenticationState.AUTHENTICATED
 import com.bravedroid.navigation.LoginViewModel.AuthenticationState.INVALID_AUTHENTICATION
 import com.bravedroid.navigation.RegistrationViewModel.RegistrationState.REGISTRATION_COMPLETED
+import com.google.android.material.snackbar.BaseTransientBottomBar.LENGTH_LONG
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_choose_user_password.*
 import kotlinx.android.synthetic.main.fragment_login.password_editText
@@ -44,7 +45,7 @@ class ChooseUserPasswordFragment : Fragment() {
                     if (state == AUTHENTICATED) {
                         findNavController().popBackStack(R.id.profileFragment, false)
                     } else if (state == INVALID_AUTHENTICATION) {
-                        Snackbar.make(requireView(), "AUTHENTICATION FAILED ", Snackbar.LENGTH_LONG)
+                        Snackbar.make(requireView(), "AUTHENTICATION FAILED ", LENGTH_LONG)
                             .show()
                     }
                 }
