@@ -4,7 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
     app:startDestination="@id/mainFragment">
-
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.bravedroid.navigation.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login">
+        <action
+            android:id="@+id/action_loginFragment_to_register_nav_graph"
+            app:destination="@id/register_nav_graph" />
+    </fragment>
+    <action
+        android:id="@+id/action_global_loginFragment"
+        app:destination="@id/loginFragment" />
     <fragment
         android:id="@+id/mainFragment"
         android:name="com.bravedroid.navigation.MainFragment"
@@ -15,7 +26,11 @@
             app:destination="@id/chooseRecipientFragment" />
         <action
             android:id="@+id/action_mainFragment_to_viewTransactionFragment"
-            app:destination="@id/viewTransactionFragment" />
+            app:destination="@id/viewTransactionFragment"
+            app:enterAnim="@anim/slide_in_from_right_to_left"
+            app:exitAnim="@anim/slide_out_from_right_to_left"
+            app:popEnterAnim="@anim/slide_in_from_left_to_right"
+            app:popExitAnim="@anim/slide_out_from_left_to_right" />
         <action
             android:id="@+id/action_mainFragment_to_viewBalanceFragment"
             app:destination="@id/viewBalanceFragment" />
@@ -42,6 +57,9 @@
         <action
             android:id="@+id/action_mainFragment_to_history_nav_graph"
             app:destination="@id/history_nav_graph" />
+        <deepLink
+            android:id="@+id/deepLinkMainFragment"
+            app:uri="appAndroid://mainScreen" />
     </fragment>
     <fragment
         android:id="@+id/chooseRecipientFragment"
@@ -55,19 +73,6 @@
                 android:name="name"
                 app:argType="string" />
         </action>
-    </fragment>
-    <fragment
-        android:id="@+id/confirmationFragment"
-        android:name="com.bravedroid.navigation.ConfirmationFragment"
-        android:label="fragment_confirmation"
-        tools:layout="@layout/fragment_confirmation">
-        <argument
-            android:name="amount"
-            app:argType="string" />
-
-        <argument
-            android:name="name"
-            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/specifyAmountFragment"
@@ -84,6 +89,22 @@
                 android:name="name"
                 app:argType="string" />
         </action>
+        <argument
+            android:name="name"
+            app:argType="string" />
+        <deepLink
+            android:id="@+id/deepLink"
+            app:uri="https://www.bravedroid.com/name/{name_dl}" />
+    </fragment>
+    <fragment
+        android:id="@+id/confirmationFragment"
+        android:name="com.bravedroid.navigation.ConfirmationFragment"
+        android:label="fragment_confirmation"
+        tools:layout="@layout/fragment_confirmation">
+        <argument
+            android:name="amount"
+            app:argType="string" />
+
         <argument
             android:name="name"
             app:argType="string" />
@@ -146,4 +167,5 @@
     <action
         android:id="@+id/action_global_infoFragment"
         app:destination="@id/infoFragment" />
+    <include app:graph="@navigation/registration_nav_graph" />
 </navigation>

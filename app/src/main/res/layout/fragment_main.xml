@@ -23,9 +23,9 @@
         android:id="@+id/send_money_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:backgroundTint="@color/colorAccent"
         android:text="Send money"
         android:textStyle="bold"
-        android:backgroundTint="@color/colorAccent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toRightOf="parent"
         app:layout_constraintRight_toLeftOf="parent"
@@ -35,9 +35,9 @@
         android:id="@+id/view_balance_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textStyle="bold"
-        android:text="View balance"
         android:backgroundTint="@color/colorAccent"
+        android:text="View balance"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toRightOf="parent"
         app:layout_constraintRight_toLeftOf="parent"
@@ -47,30 +47,40 @@
         android:id="@+id/profile_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="your profile?"
         android:backgroundTint="@color/colorAccent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:text="your profile?"
         android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/about_us_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:backgroundTint="@color/colorAccent"
         android:text="About us?"
         android:textStyle="bold"
-        android:backgroundTint="@color/colorAccent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/settings_imageView"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:transitionName="settings_imageView_transition"
+        app:srcCompat="@drawable/ic_settings"
+        android:tint="@color/colorAccent"
+        app:layout_constraintBottom_toTopOf="@id/settings_btn"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
         android:id="@+id/settings_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textStyle="bold"
         android:background="@android:drawable/ic_menu_manage"
         android:backgroundTint="@color/colorAccent"
         android:text="settings"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -78,9 +88,9 @@
         android:id="@+id/history_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:backgroundTint="@color/colorAccent"
         android:text="History"
         android:textStyle="bold"
-        android:backgroundTint="@color/colorAccent"
         app:layout_constraintBottom_toTopOf="@+id/messages_btn"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/about_us_btn" />
@@ -89,9 +99,9 @@
         android:id="@+id/messages_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textStyle="bold"
-        android:text="Messages"
         android:backgroundTint="@color/colorAccent"
+        android:text="Messages"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 

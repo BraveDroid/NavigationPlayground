@@ -2,7 +2,7 @@ package com.bravedroid.navigation
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.DialogFragment
+import androidx.navigation.ActivityNavigator
 
 class MainActivity : AppCompatActivity() {
 
@@ -11,24 +11,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
     }
 
-    override fun onBackPressed() {
-        val dialogFragment =
-            supportFragmentManager.findFragmentByTag("confirmationProfileDialogFragment") as? DialogFragment
-
-//        if (hasFullScreenDialog(dialogFragment))
-        if (dialogFragment.isStillVisible())
-            dialogFragment?.dismiss()
-        else
-            super.onBackPressed()
-
-    }
-
-    private fun hasFullScreenDialog(dialogFragment: DialogFragment?): Boolean {
-        return dialogFragment != null
-                && dialogFragment.isVisible
-    }
-
-    private fun DialogFragment?.isStillVisible(): Boolean {
-        return this != null && this.isVisible
+    override fun finish() {
+        super.finish()
+        ActivityNavigator.applyPopAnimationsToPendingTransition(this)
     }
 }

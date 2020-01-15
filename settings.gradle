@@ -1,2 +1,2 @@
-include ':app', ':historymodule'
+include ':app', ':history-feature'
 rootProject.name='NavigationPlayground'

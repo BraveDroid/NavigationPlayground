@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.bravedroid.navigation.util.navigateWithAnimation
 import kotlinx.android.synthetic.main.fragment_specify_amount.*
 
 class SpecifyAmountFragment : Fragment() {
@@ -22,10 +23,11 @@ class SpecifyAmountFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val specifyAmountFragmentArgs by navArgs<SpecifyAmountFragmentArgs>()
-        val name = specifyAmountFragmentArgs.name
+        val name = arguments?.getString("name_dl") ?:specifyAmountFragmentArgs.name
+
         send_btn.setOnClickListener {
             val amount = input_amount.text.toString()
-            findNavController().navigate(
+            findNavController().navigateWithAnimation(
                 SpecifyAmountFragmentDirections.actionSpecifyAmountFragmentToConfirmationFragment(
                     amount,
                     name

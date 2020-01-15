@@ -7,6 +7,16 @@
     android:background="#d7c"
     tools:context=".AboutActivity">
 
+    <ImageView
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_gravity="bottom"
+        android:transitionName="settings_imageView_transition"
+        android:tint="@color/colorPrimary"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_settings" />
+
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
@@ -32,4 +42,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="lolo" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

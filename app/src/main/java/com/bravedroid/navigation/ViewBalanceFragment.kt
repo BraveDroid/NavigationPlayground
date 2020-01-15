@@ -22,7 +22,7 @@ class ViewBalanceFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        info_btn.setOnClickListener {
+        info_btn_viewBalance.setOnClickListener {
             findNavController().navigate(ViewBalanceFragmentDirections.actionGlobalInfoFragment())
         }
     }
